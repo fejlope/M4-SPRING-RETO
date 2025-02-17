@@ -20,16 +20,22 @@ public class CuentaService {
         this.HistoricoTransaccion = historicoTransaccion;
     }
 
-    public Cuenta ConsultaCuenta(BuscarIdCuentaDTO cuentaPorId){
-        Cuenta OPtionaldatosCuenta = cuentaRepository.findById(cuentaPorId.getIdCuenta()).orElseThrow(() ->
+    public Cuenta ConsultaCuenta(BuscarIdCuentaDTO buscarIdCuentaDTO){
+        Cuenta InfoCuenta = cuentaRepository.findById(buscarIdCuentaDTO.getIdCuenta()).orElseThrow(() ->
                 new NoSuchElementException("Cuenta no encontrada"));
 
-        Cuenta datosCuenta = OPtionaldatosCuenta;
+        Cuenta datosCuenta = InfoCuenta;
         return datosCuenta;
     }
-    public List<Transaccion> consultaHistoriaTransacciones(BuscarIdCuentaDTO cuentaPorId){
+    public List<Transaccion> consultaHistoriaTransacciones(BuscarIdCuentaDTO buscarIdCuentaDTO){
         Transaccion transacciones = new Transaccion();
-        return  HistoricoTransaccion.findTransactions(cuentaPorId.getIdCuenta());
-
+        return  HistoricoTransaccion.findTransactions(buscarIdCuentaDTO.getIdCuenta());
     }
+
+    public List<Cuenta> listarCuentas() {
+        return cuentaRepository.findAll();
+    }
+
+
+
 }

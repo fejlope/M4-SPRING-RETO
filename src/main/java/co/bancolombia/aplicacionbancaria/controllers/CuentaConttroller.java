@@ -32,4 +32,9 @@ public class CuentaConttroller {
     public List<Transaccion> listaTrasacciones(@Valid @RequestBody BuscarIdCuentaDTO buscarIdCuentaDTO){
         return cuentaService.consultaHistoriaTransacciones(buscarIdCuentaDTO);
     }
+
+    @GetMapping("/listar")
+    public List<Cuenta> listarCuentas() {
+        return cuentaService.listarCuentas();
+    }
 }

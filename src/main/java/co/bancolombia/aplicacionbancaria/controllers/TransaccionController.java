@@ -20,7 +20,7 @@ public class TransaccionController {
         this.transaccioService = transaccioService;
     }
 
-    @PostMapping("/depositosucursal")
+    @PostMapping("/depositoqsucursal")
     public String depositoSucursal(@Valid @RequestBody TransaccionDTO TransaccionDTO) {
         Cuenta datosCuenta = transaccioService.depositoSucursal(TransaccionDTO);
         return "Depósito exitoso!!! \n" + datosCuenta.toString();

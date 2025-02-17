@@ -12,13 +12,13 @@ public class Transaccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long transaccionid;
+    private Long id;
     @Column(name = "tipo")
-    private String tipotransaccion;
+    private String tipo;
     @Column(name = "monto")
-    private BigDecimal montotransaccion;
+    private BigDecimal monto;
     @Column(name = "fecha")
-    private Timestamp fechatransaccion;
+    private Timestamp fecha;
 
     @ManyToOne
     @JoinColumn(name = "idcuenta")
@@ -28,44 +28,44 @@ public class Transaccion {
     public Transaccion() {
     }
 
-    public Transaccion(Long transaccionid, String tipotransaccion, BigDecimal montotransaccion, Timestamp fechatransaccion, Cuenta cuenta) {
-        this.transaccionid = transaccionid;
-        this.tipotransaccion = tipotransaccion;
-        this.montotransaccion = montotransaccion;
-        this.fechatransaccion = fechatransaccion;
+    public Transaccion(Long id, String tipo, BigDecimal monto, Timestamp fecha, Cuenta cuenta) {
+        this.id = id;
+        this.tipo = tipo;
+        this.monto = monto;
+        this.fecha = fecha;
         this.cuenta = cuenta;
     }
 
-    public Long getTransaccionid() {
-        return transaccionid;
+    public Long getId() {
+        return id;
     }
 
-    public void setTransaccionid(Long transaccionid) {
-        this.transaccionid = transaccionid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getTipotransaccion() {
-        return tipotransaccion;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipotransaccion(String tipotransaccion) {
-        this.tipotransaccion = tipotransaccion;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public BigDecimal getValortransaccion() {
-        return montotransaccion;
+    public BigDecimal getMonto() {
+        return monto;
     }
 
-    public void setValortransaccion(BigDecimal valortransaccion) {
-        this.montotransaccion = valortransaccion;
+    public void setMonto(BigDecimal monto) {
+        this.monto = monto;
     }
 
-    public Timestamp getFechatransaccion() {
-        return fechatransaccion;
+    public Timestamp getFecha() {
+        return fecha;
     }
 
-    public void setFechatransaccion(Timestamp fechatransaccion) {
-        this.fechatransaccion = fechatransaccion;
+    public void setFecha(Timestamp fecha) {
+        this.fecha = fecha;
     }
 
     public Cuenta getCuenta() {

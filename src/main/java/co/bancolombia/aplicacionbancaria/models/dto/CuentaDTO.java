@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 
-public class CrearCuentaDTO {
+public class CuentaDTO {
     @NotNull(message = "tipo - El nombre del titular esta vacio")
     @Positive(message = "tipo - El dato ingresado es invalido")
     private Integer tipo;
@@ -18,11 +18,11 @@ public class CrearCuentaDTO {
     @Positive(message = "El id de la cuenta debe ser mayor a cero")
     private Long idCuenta;
 
-    public CrearCuentaDTO() {
+    public CuentaDTO() {
 
     }
 
-    public CrearCuentaDTO(Integer tipo, BigDecimal saldo, Long idCuenta) {
+    public CuentaDTO(Integer tipo, BigDecimal saldo, Long idCuenta) {
         this.tipo = tipo;
         this.saldo = saldo;
         this.idCuenta = idCuenta;

@@ -29,7 +29,7 @@ public class TransaccionesService {
         Cuenta cuenta = validaCuenta(transaccionDTO);
         cuenta = cuenta.DepositoSucursal(transaccionDTO.getMonto());
         Transaccion logHistoria = llenarTransaccion(cuenta, "Depósito en sucursal fisica", transaccionDTO.getMonto());
-        cuenta.getHistoricoTransacciones().add(logHistoria);
+        cuenta.gettransacciones().add(logHistoria);
         transaccionRepository.save(logHistoria);
         return cuenta;
     }
@@ -40,7 +40,7 @@ public class TransaccionesService {
             CuentaBasica cuentaBasica = (CuentaBasica) cuenta;
             cuentaBasica = (CuentaBasica) cuentaBasica.DepositoCajero(transaccionDTO.getMonto());
             Transaccion logHistoria = llenarTransaccion(cuentaBasica, "Depósito desde cajero", transaccionDTO.getMonto());
-            cuentaBasica.getHistoricoTransacciones().add(logHistoria);
+            cuentaBasica.gettransacciones().add(logHistoria);
             transaccionRepository.save(logHistoria);
             return cuentaBasica;
         } else {
@@ -58,14 +58,14 @@ public class TransaccionesService {
             CuentaBasica cuentaBasica = (CuentaBasica) cuenta;
             cuentaBasica = (CuentaBasica) cuentaBasica.Transferencia(transaccionDTO.getMonto());
             Transaccion logHistoria = llenarTransaccion(cuentaBasica, "Depósito desde otras cuentas", transaccionDTO.getMonto());
-            cuentaBasica.getHistoricoTransacciones().add(logHistoria);
+            cuentaBasica.gettransacciones().add(logHistoria);
             transaccionRepository.save(logHistoria);
             return cuentaBasica;
         } else {
             CuentaPremium cuentaPremium = (CuentaPremium) cuenta;
             cuentaPremium = (CuentaPremium) cuentaPremium.Transferencia(transaccionDTO.getMonto());
             Transaccion logHistoria = llenarTransaccion(cuentaPremium, "Depósito desde otras cuentas", transaccionDTO.getMonto());
-            cuentaPremium.getHistoricoTransacciones().add(logHistoria);
+            cuentaPremium.gettransacciones().add(logHistoria);
             transaccionRepository.save(logHistoria);
             return cuentaPremium;
         }
@@ -76,7 +76,7 @@ public class TransaccionesService {
         cuenta = cuenta.CompraFisico(transaccionDTO.getMonto());
         System.out.println("monto: " + transaccionDTO.getMonto());
         Transaccion logHistoria = llenarTransaccion(cuenta, "Depósito desde establecimiento fisico", transaccionDTO.getMonto());
-        cuenta.getHistoricoTransacciones().add(logHistoria);
+        cuenta.gettransacciones().add(logHistoria);
         transaccionRepository.save(logHistoria);
         return cuenta;
     }
@@ -85,7 +85,7 @@ public class TransaccionesService {
         Cuenta cuenta = validaCuenta(transaccionDTO);
         cuenta = cuenta.CompraWeb(transaccionDTO.getMonto());
         Transaccion logHistoria = llenarTransaccion(cuenta, "Depósito desde pagina web", transaccionDTO.getMonto());
-        cuenta.getHistoricoTransacciones().add(logHistoria);
+        cuenta.gettransacciones().add(logHistoria);
         transaccionRepository.save(logHistoria);
         return cuenta;
     }
@@ -96,14 +96,14 @@ public class TransaccionesService {
             CuentaBasica cuentaBasica = (CuentaBasica) cuenta;
             cuentaBasica = (CuentaBasica) cuentaBasica.RetiroCajero(transaccionDTO.getMonto());
             Transaccion logHistoria = llenarTransaccion(cuentaBasica, "Retiro en cajero", transaccionDTO.getMonto());
-            cuentaBasica.getHistoricoTransacciones().add(logHistoria);
+            cuentaBasica.gettransacciones().add(logHistoria);
             transaccionRepository.save(logHistoria);
             return cuentaBasica;
         } else {
             CuentaPremium cuentaPremium = (CuentaPremium) cuenta;
             cuentaPremium = (CuentaPremium) cuentaPremium.RetiroCajero(transaccionDTO.getMonto());
             Transaccion logHistoria = llenarTransaccion(cuentaPremium, "Retiro en cajero", transaccionDTO.getMonto());
-            cuentaPremium.getHistoricoTransacciones().add(logHistoria);
+            cuentaPremium.gettransacciones().add(logHistoria);
             transaccionRepository.save(logHistoria);
             return cuentaPremium;
         }

@@ -21,21 +21,21 @@ public abstract class Cuenta {
     protected Long CuentaId;
 
     @Column(name = "cuenta")
-    protected Integer numeroCuenta;
+    protected Integer cuenta;
 
     protected BigDecimal saldo;
     @OneToMany(mappedBy = "cuenta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
 
-    protected Set<Transaccion> historicoTransacciones;
+    protected Set<Transaccion> transacciones;
 
     public Cuenta() {
-        historicoTransacciones = new HashSet<>();;
+        transacciones = new HashSet<>();;
     }
 
     public Cuenta(Long cuentaId, Integer numeroCuenta, BigDecimal saldo) {
         CuentaId = cuentaId;
-        this.numeroCuenta = numeroCuenta;
+        this.cuenta = cuenta;
         this.saldo = saldo;
     }
 
@@ -48,11 +48,11 @@ public abstract class Cuenta {
     }
 
     public Integer getNumeroCuenta() {
-        return numeroCuenta;
+        return cuenta;
     }
 
     public void setNumeroCuenta(Integer numeroCuenta) {
-        this.numeroCuenta = numeroCuenta;
+        this.cuenta = cuenta;
     }
 
     public BigDecimal getSaldo() {
@@ -64,12 +64,12 @@ public abstract class Cuenta {
     }
 
 
-    public Set<Transaccion> getHistoricoTransacciones() {
-        return historicoTransacciones;
+    public Set<Transaccion> gettransacciones() {
+        return transacciones;
     }
 
-    public void setHistoricoTransacciones(Set<Transaccion> historicoTransacciones) {
-        this.historicoTransacciones = historicoTransacciones;
+    public void settransacciones(Set<Transaccion> transacciones) {
+        this.transacciones = transacciones;
     }
 
     public Cuenta DepositoSucursal(BigDecimal valorDeposito){
@@ -106,10 +106,9 @@ public abstract class Cuenta {
         return this;
     }
 
-   // abstract void RetiroEnCajero(BigDecimal valorRetiro);
-   public abstract Cuenta RetiroCajero(BigDecimal valorRetiro);
+    public abstract Cuenta RetiroCajero(BigDecimal valorRetiro);
     @Override
     public String toString() {
-        return "Id     : " + CuentaId + "\nCuenta : " + numeroCuenta + "\nSaldo  : " + saldo ;
+        return "Id     : " + CuentaId + "\nCuenta : " + cuenta + "\nSaldo  : " + saldo ;
     }
 }
